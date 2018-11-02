@@ -2,9 +2,7 @@ package ru.yu_go.appManager;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 import java.util.concurrent.TimeUnit;
-
 import static org.testng.Assert.fail;
 
 public class ApplicationManager {
@@ -27,7 +25,6 @@ public class ApplicationManager {
     }
 
 
-
     public void stop() {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
@@ -45,14 +42,6 @@ public class ApplicationManager {
         }
     }
 
-    public boolean isAlertPresent() {
-        try {
-            driver.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
 
     public String closeAlertAndGetItsText() {
         try {
