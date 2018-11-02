@@ -1,4 +1,4 @@
-package ru.yu_go;
+package ru.yu_go.model;
 
 public class GroupData {
     private final String name;
