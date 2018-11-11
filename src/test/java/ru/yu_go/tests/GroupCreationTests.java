@@ -7,6 +7,7 @@ import ru.yu_go.model.GroupData;
 
 public class GroupCreationTests extends TestBase {
 
+
     @Test
     public void testGroupCreation() throws Exception {
         app.getNavigationHelper().gotoGroupPage();

@@ -2,6 +2,7 @@ package ru.yu_go.appManager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import ru.yu_go.model.ContactData;
@@ -29,27 +30,20 @@ public class HelperBase {
 
     }
 
-    public boolean isAlertPresent() {
-        try {
-            driver.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
 
-    public void clickMonth(ContactData contactData, By locator) {
-        new Select(driver.findElement(locator)).selectByVisibleText(contactData.getMonth());
-        click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[35]"));
-    }
 
-    public void clickBday(ContactData contactData, By locator) {
-        click(locator);
-        new Select(driver.findElement(locator)).selectByVisibleText(contactData.getBdate());
-        click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[17]"));
-    }
+
 
     public void EnterContact() {
         click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]"));
+    }
+
+    public boolean isElementPresent(By locator) {
+        try {
+            driver.findElement(locator);
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
     }
 }
