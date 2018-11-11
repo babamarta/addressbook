@@ -6,8 +6,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import ru.yu_go.appManager.ApplicationManager;
 
-import static org.testng.Assert.fail;
-
 
 public class TestBase {
 
@@ -21,7 +19,7 @@ public class TestBase {
     @AfterClass(alwaysRun = true)
     public void tearDown() throws Exception {
         app.tearDown();
-        }
+    }
 
 
 }
