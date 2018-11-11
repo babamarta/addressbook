@@ -24,6 +24,13 @@ public class GroupHelper extends HelperBase {
         type(By.name("group_footer"), groupData.getFooter());
     }
 
+    public void createGroup(GroupData group) {
+        initGroupCreation();
+        fillGroupForm(group);
+        submitGroupCreation();
+        returnGroupPage();
+    }
+
     public void initGroupCreation() {
         click(By.name("new"));
     }
@@ -44,14 +51,9 @@ public class GroupHelper extends HelperBase {
         click(By.name("update"));
     }
 
-    public void createGroup(GroupData group) {
-        initGroupCreation();
-        fillGroupForm(group);
-        submitGroupCreation();
-        returnGroupPage();
-    }
+
 
     public boolean isThereAGroup() {
-        return isElementPresent(By.name("selected[]"));
+        return isElementPresent(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='import'])[1]/following::img[2]"));
     }
 }

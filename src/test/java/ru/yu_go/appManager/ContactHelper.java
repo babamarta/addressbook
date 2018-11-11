@@ -8,15 +8,25 @@ import ru.yu_go.model.ContactData;
 
 public class ContactHelper extends HelperBase {
 
+
+
     public ContactHelper(WebDriver driver) {
         super(driver);
+    }
+
+    public void goToAddNewPage() {
+        click(By.linkText("add new"));
+    }
+
+    public void goToHomePage() {
+        if (isElementPresent(By.id ("maintable"))){return;}
+        click(By.linkText("home"));
     }
 
 
     public void FillContactForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getFirstName());
         type(By.name("middlename"), contactData.getMiddleName());
-//        click(By.name("theform"));
         type(By.name("lastname"), contactData.getLastName());
         type(By.name("nickname"), contactData.getNickName());
         type(By.name("title"), contactData.getTitle());
@@ -28,9 +38,6 @@ public class ContactHelper extends HelperBase {
         type(By.name("fax"), contactData.getFax());
         type(By.name("email2"), contactData.getEmail());
         type(By.name("email"), contactData.getEmail1());
-//        clickBday(contactData, By.name("bday"));
-//        click(By.name("bmonth"));
-//        clickMonth(contactData, By.name("bmonth"));
         type(By.name("byear"), contactData.getYear());
         type(By.name("address2"), contactData.getAddress2());
         type(By.name("phone2"), contactData.getPhone2());
@@ -42,12 +49,26 @@ public class ContactHelper extends HelperBase {
             }
         }
 
+    public void FillContactForm2(ContactData contactData) {
+        type(By.name("firstname"), contactData.getFirstName());
+        type(By.name("middlename"), contactData.getMiddleName());
+    }
+    public void createContact (ContactData contact){
+        goToAddNewPage();
+        FillContactForm2(contact);
+        EnterContact();
+        goToHomePage();
+    }
+
     public void updateContact(String locator) {
         driver.findElement(By.name(locator)).click();
     }
 
     public void selectContact(By locator) {
         driver.findElement(locator).click();
+    }
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
     }
 
 

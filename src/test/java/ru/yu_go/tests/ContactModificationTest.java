@@ -16,7 +16,17 @@ public class ContactModificationTest extends TestBase {
 
 
         app.getNavigationHelper().goToHomePage();
-            app.getContactHelper().selectContact(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='aaasssdddvvv'])[1]/following::img[2]"));
+
+        if (! app.getContactHelper().isThereAContact()){
+            app.getContactHelper().createContact (new ContactData("457821", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,null, null, null, null));
+        }
+
+//        if (! app.getGroupHelper().isThereAGroup()) {
+////            app.getGroupHelper().createGroup (new GroupData("test2",null,null));
+////        }
+
+
+        app.getContactHelper().selectContact(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='import'])[1]/following::img[2]"));
         app.getContactHelper().FillContactForm(new ContactData("rrr", "rrr", "eee", "uuu", "iii", "ooo", "ppp", "aaa", "sss", "ddd", "fff", "ggg@rt.ty", "rrr.yyyttt.@ooo.tu", "ccc", "vvv", "bbb","15", "January", "1234", null), false);
         app.getContactHelper().updateContact("update");
     }

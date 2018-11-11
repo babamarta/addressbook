@@ -108,13 +108,6 @@ public class ContactData {
     public String getNotes() {
         return notes;
     }
-    public String getBdate() {
-        return bdate;
-    }
-
-    public String getMonth() {
-        return month;
-    }
 
     public String getYear() {
         return year;
