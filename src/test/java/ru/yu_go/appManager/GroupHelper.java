@@ -56,4 +56,8 @@ public class GroupHelper extends HelperBase {
     public boolean isThereAGroup() {
         return isElementPresent(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='import'])[1]/following::img[2]"));
     }
+
+    public int getGroupCount() {
+        return driver.findElements(By.name("selected[]")).size();
+    }
 }
