@@ -43,7 +43,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("phone2"), contactData.getPhone2());
         type(By.name("notes"), contactData.getNotes());
         if (creation) {
-            new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+            new Select(driver.findElement(By.name("new_group"))).selectByVisibleText("test2");
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
             }
@@ -72,4 +72,7 @@ public class ContactHelper extends HelperBase {
     }
 
 
+    public int getContactCount() {
+        return driver.findElements(By.name("selected[]")).size();
+    }
 }
